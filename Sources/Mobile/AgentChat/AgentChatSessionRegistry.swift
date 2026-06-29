@@ -472,7 +472,11 @@ final class AgentChatSessionRegistry {
             let kind = ChatAgentKind(source: source)
             for entry in entries {
                 guard records[entry.sessionID] == nil else { continue }
-                let alive = entry.pid.map { kill(pid_t($0), 0) == 0 } ?? false
+                // ESRCH means the process is gone; EPERM means it exists but is
+                // not signalable, which still counts as alive (matching the
+                // convention in `syncProcessExitWatch`/`processIsDead`). Treating
+                // EPERM as dead here would drop a live but unsignalable session.
+                let alive = entry.pid.map { kill(pid_t($0), 0) == 0 || errno != ESRCH } ?? false
                 var record = AgentChatSessionRecord(
                     sessionID: entry.sessionID,
                     agentKind: kind,
