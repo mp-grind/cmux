@@ -27,6 +27,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
     case keyboardShortcuts
     case workspaceColors
     case settingsJSON
+    case mcpServers
     case reset
 
     public var id: Self { self }
@@ -48,6 +49,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
         case .globalHotkey: return "Global Hotkey"
         case .keyboardShortcuts: return "Keyboard Shortcuts"
         case .workspaceColors: return "Workspace Colors"
+        case .mcpServers: return "MCP Servers"
         case .settingsJSON: return "cmux.json"
         case .reset: return "Reset"
         }
@@ -70,6 +72,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
         case .globalHotkey: return "keyboard.badge.ellipsis"
         case .keyboardShortcuts: return "keyboard"
         case .workspaceColors: return "paintpalette"
+        case .mcpServers: return "server.rack"
         case .settingsJSON: return "doc.text"
         case .reset: return "arrow.counterclockwise"
         }
@@ -94,6 +97,7 @@ public enum SettingsSectionID: String, CaseIterable, Identifiable, Sendable, Has
         case .globalHotkey: return "system wide shortcut"
         case .keyboardShortcuts: return "keybindings commands chords"
         case .workspaceColors: return "palette tabs indicator"
+        case .mcpServers: return "mcp model context protocol servers enable disable health claude"
         case .settingsJSON: return "config file preferences editor schema jsonc reload"
         case .reset: return "defaults reset"
         }

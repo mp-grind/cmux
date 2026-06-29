@@ -515,6 +515,9 @@ public struct SettingsWindowRoot: View {
         SettingsJSONSection(jsonStore: jsonStore, hostActions: hostActions)
             .id(anchorID(for: .settingsJSON))
 
+        MCPServersSection()
+            .id(anchorID(for: .mcpServers))
+
         ResetSection(
             defaultsStore: defaultsStore,
             jsonStore: jsonStore,
